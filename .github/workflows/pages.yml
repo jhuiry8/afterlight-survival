@@ -25,6 +25,17 @@ jobs:
         uses: actions/checkout@v4
       - name: Configure Pages
         uses: actions/configure-pages@v5
+      - name: Configure multiplayer connection
+        shell: bash
+        env:
+          SUPABASE_URL: ${{ secrets.AFTERLIGHT_SUPABASE_URL }}
+          SUPABASE_KEY: ${{ secrets.AFTERLIGHT_SUPABASE_ANON_KEY }}
+        run: |
+          if [[ -n "$SUPABASE_URL" && -n "$SUPABASE_KEY" ]]; then
+            printf 'window.AFTERLIGHT_CONFIG = { url: "%s", anonKey: "%s" };\n' "$SUPABASE_URL" "$SUPABASE_KEY" > config.js
+          else
+            cp config.example.js config.js
+          fi
       - name: Upload static site
         uses: actions/upload-pages-artifact@v3
         with:

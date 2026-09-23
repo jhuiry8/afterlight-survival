@@ -24,7 +24,7 @@
         <div class="eyebrow"><span class="eyebrow-line"></span> ARCADE SURVIVAL · 01</div>
         <h1>最後<span class="title-light">一盞燈</span><span class="title-period">.</span></h1>
         <p class="subtitle">雨停之前，<span>別讓燈熄滅。</span></p>
-        <div class="meta-row"><span><i class="meta-icon">◷</i> 約 5 分鐘</span><span><i class="meta-icon">◎</i> 單人遊玩</span><span class="meta-difficulty"><i>✳</i> 難度・逐漸升高</span></div>
+        <div class="meta-row"><span><i class="meta-icon">◷</i> 約 5 分鐘</span><span><i class="meta-icon">◎</i> 最多 4 人合作</span><span class="meta-difficulty"><i>✳</i> 難度・逐漸升高</span></div>
       </div>
       <div class="hero-note"><span class="note-cross">✳</span><span>ONE LIGHT.<br>NO WAY OUT.</span></div>
     </section>
@@ -40,6 +40,13 @@
               <div class="overlay-icon">✳</div>
               <h2>天黑了。</h2>
               <p class="overlay-copy">你是這區最後一個還亮著的人。<br>撐過一波又一波的影子，等待天亮。</p>
+              <div class="lobby-card" id="lobbyCard">
+                <div class="lobby-title"><span>✳</span> 組隊行動 <small>最多 4 人</small></div>
+                <div class="connection-state" id="connectionState"><span class="state-light"></span><span id="connectionText">多人服務未設定</span></div>
+                <div class="room-controls"><input id="playerName" maxlength="14" autocomplete="nickname" placeholder="你的代號" aria-label="玩家代號"><button class="room-button" id="createRoomBtn">建立房間</button></div>
+                <div class="room-controls"><input id="roomCode" maxlength="6" autocomplete="off" placeholder="輸入 6 位房間碼" aria-label="房間代碼"><button class="room-button secondary" id="joinRoomBtn">加入</button></div>
+                <div class="lobby-status" id="lobbyStatus">多人連線需要 Supabase 設定；未設定時仍可單人遊玩。</div>
+              </div>
               <button class="start-button" id="startBtn"><span>開始生存</span><span class="button-arrow">↗</span></button>
               <div class="press-hint">按 <kbd>ENTER</kbd> 也可以開始</div>
             </div>
@@ -70,6 +77,8 @@
 
     <footer class="bottom-bar"><span>AFTERLIGHT <span>© 2026</span></span><span class="footer-center">DESIGNED FOR THE LAST ONES STANDING</span><span>NO SIGNAL <i class="signal-bars"><b></b><b></b><b></b><b></b></i></span></footer>
   </main>
+  <script src="config.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="game.js"></script>
 </body>
 </html>

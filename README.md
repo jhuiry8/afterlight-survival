@@ -14,9 +14,16 @@
 - **手機／平板：** 左下搖桿移動，右下按鈕射擊
 - **重新開始：** 遊戲結束後按 Enter
 
-## 多人連線
+## 多人連線設定
 
-目前版本是單人遊戲。實作多人連線需要額外的即時訊息伺服器（例如 WebSocket 服務或託管的即時資料庫）；靜態 GitHub Pages 本身無法轉送玩家即時狀態。程式採取免建置、零依賴的純前端架構，之後可接上獨立的多人伺服器。
+遊戲已包含 6 位房間碼、Presence 玩家狀態、房主開始同步，以及玩家移動／射擊和敵人事件的即時 Broadcast。多人房間使用 Supabase Realtime；沒設定服務時仍可玩單人模式。
+
+1. 建立免費 [Supabase 專案](https://supabase.com/dashboard)。
+2. 在專案的 Connect/API Keys 區複製 Project URL 和 **publishable key**（舊專案也可用 anon key；不可使用 service_role/secret key）。
+3. 複製 `config.example.js` 為 `config.js`，填入 `url` 和 `anonKey`。
+4. 連線設定不能提交在公開儲存庫中。若在本機使用，直接打開已設定的網站；若要讓 Pages 公開網站啟用多人，請在儲存庫 Settings → Secrets and variables → Actions 加入 `AFTERLIGHT_SUPABASE_URL` 和 `AFTERLIGHT_SUPABASE_ANON_KEY`，並把這兩個值帶入 Pages 部署前的 `config.js` 產生步驟。
+
+按「建立房間」分享顯示的 6 位碼，其他玩家輸入同一房間碼並選擇「加入」。房主按「開始生存」後一起開始。Supabase 免費 Realtime 方案目前列出每專案 200 個同時連線與每秒 100 則訊息；本遊戲將更新頻率限制在每位玩家每秒約 13 次。
 
 ## 部署
 
