@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <meta name="theme-color" content="#090d0c" />
+  <meta name="description" content="最後一盞燈 — 在霓虹雨夜中生存下去。免費瀏覽器俯視角射擊遊戲。" />
+  <title>最後一盞燈 — NEON LAST STAND</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800;900&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="最後一盞燈首頁"><span class="brand-mark">✳</span><span>AFTER<span class="brand-light">LIGHT</span></span></a>
+      <div class="top-status"><span class="live-dot"></span> SECTOR 07 <span class="status-divider">/</span> NIGHT SHIFT</div>
+      <button class="sound-toggle" id="soundToggle" aria-label="切換音效"><span id="soundIcon">♫</span><span class="sound-label">SOUND ON</span></button>
+    </header>
+
+    <section class="hero">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="eyebrow-line"></span> ARCADE SURVIVAL · 01</div>
+        <h1>最後<span class="title-light">一盞燈</span><span class="title-period">.</span></h1>
+        <p class="subtitle">雨停之前，<span>別讓燈熄滅。</span></p>
+        <div class="meta-row"><span><i class="meta-icon">◷</i> 約 5 分鐘</span><span><i class="meta-icon">◎</i> 單人遊玩</span><span class="meta-difficulty"><i>✳</i> 難度・逐漸升高</span></div>
+      </div>
+      <div class="hero-note"><span class="note-cross">✳</span><span>ONE LIGHT.<br>NO WAY OUT.</span></div>
+    </section>
+
+    <section class="game-layout" aria-label="遊戲區域">
+      <div class="game-column">
+        <div class="game-frame" id="gameFrame">
+          <canvas id="game" aria-label="俯視角生存射擊遊戲"></canvas>
+          <div class="game-overlay" id="overlay">
+            <div class="overlay-noise"></div>
+            <div class="overlay-content" id="overlayContent">
+              <div class="overline"><span class="live-dot"></span> INCOMING TRANSMISSION</div>
+              <div class="overlay-icon">✳</div>
+              <h2>天黑了。</h2>
+              <p class="overlay-copy">你是這區最後一個還亮著的人。<br>撐過一波又一波的影子，等待天亮。</p>
+              <button class="start-button" id="startBtn"><span>開始生存</span><span class="button-arrow">↗</span></button>
+              <div class="press-hint">按 <kbd>ENTER</kbd> 也可以開始</div>
+            </div>
+          </div>
+          <div class="hud hidden" id="hud">
+            <div class="hud-top"><div class="hud-level"><span class="hud-label">WAVE</span><strong id="waveVal">01</strong></div><div class="hud-center"><span class="hud-label">ELIMINATED</span><strong id="killVal">000</strong></div><div class="hud-time"><span class="hud-label">SURVIVED</span><strong id="timeVal">00:00</strong></div></div>
+            <div class="health-wrap"><span class="hud-label">VITALS</span><div class="health-track"><div class="health-fill" id="healthFill"></div></div><span class="health-value" id="healthVal">100</span></div>
+            <div class="hud-bottom"><span class="wave-caption" id="waveCaption">WAVE 01 — HOLD THE LINE</span><span class="ammo-label">∞ <span>AMMO</span></span></div>
+          </div>
+          <div class="touch-controls" id="touchControls"><div class="touch-pad" id="movePad"><span class="pad-cross">+</span><span class="pad-knob" id="moveKnob"></span></div><div class="touch-fire" id="fireBtn"><span>FIRE</span><i>✳</i></div></div>
+          <div class="damage-flash" id="damageFlash"></div>
+        </div>
+        <div class="game-footer"><span><i class="footer-dot"></i> GAME STATUS <strong id="statusText">READY TO DEPLOY</strong></span><span class="version">BUILD 0.7.24 <b>·</b> BROWSER EDITION</span></div>
+      </div>
+
+      <aside class="side-panel">
+        <div class="panel-heading"><span class="panel-index">01</span><span>任務簡報</span><span class="heading-rule"></span></div>
+        <p class="mission-copy">街區已淪陷。你手上只剩一把槍、一點電，以及一個目標——<em>活下去。</em></p>
+        <div class="objective-card"><div class="objective-icon">⌖</div><div><span class="card-label">PRIMARY OBJECTIVE</span><strong>SURVIVE</strong><small>擊退影子，撐到黎明。</small></div><span class="card-check">↗</span></div>
+        <div class="panel-heading controls-heading"><span class="panel-index">02</span><span>操作方式</span><span class="heading-rule"></span></div>
+        <div class="control-row"><span class="control-action">移動</span><span class="key-group"><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd><span class="or">或</span><span class="key-long">方向鍵</span></span></div>
+        <div class="control-row"><span class="control-action">瞄準 / 射擊</span><span class="key-group"><span class="mouse-key">◉</span><span class="control-detail">滑鼠移動 / 左鍵</span></span></div>
+        <div class="control-row mobile-row"><span class="control-action">手機操作</span><span class="key-group"><span class="control-detail">左側移動・右側射擊</span></span></div>
+        <div class="tip-card"><span class="tip-star">✳</span><p><strong>FIELD NOTE</strong><br>保持移動。被包圍就結束了。</p></div>
+        <div class="high-score"><span>BEST RUN</span><strong id="bestScore">000</strong><span>ELIMINATIONS</span></div>
+      </aside>
+    </section>
+
+    <footer class="bottom-bar"><span>AFTERLIGHT <span>© 2026</span></span><span class="footer-center">DESIGNED FOR THE LAST ONES STANDING</span><span>NO SIGNAL <i class="signal-bars"><b></b><b></b><b></b><b></b></i></span></footer>
+  </main>
+  <script src="game.js"></script>
+</body>
+</html>
