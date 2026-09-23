@@ -20,4 +20,6 @@
 
 ## 部署
 
-此專案是純靜態網站，可部署至 GitHub Pages、Cloudflare Pages 或其他靜態網站代管服務。
+此專案是純靜態網站。GitHub Pages 自動部署工作流程已設好：在 GitHub 儲存庫的 **Settings → Pages → Build and deployment → Source** 選擇 **GitHub Actions**，再執行一次 Actions 工作流程即可發佈。
+
+也可部署至 [Cloudflare Pages](https://pages.cloudflare.com/) 等靜態網站代管服務。
